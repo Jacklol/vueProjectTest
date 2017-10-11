@@ -75,7 +75,7 @@ export default {
             fetch('https://api.github.com/graphql',{  
               method: 'POST',  
               headers: {  
-                "Authorization": "Bearer 8d76e598b8b5ed6cd803f1a9acd8266bad0d5cac", 
+                "Authorization": "Bearer 9cd3bda4b0a4abaa9fe4c6b8cda3172acce26e10", 
                 "Content-Type":"application/json; charset=utf-8"
               },  
               body: '{"query":"query{ user(login: \\"octocat\\"){repositories(last:100 affiliations: OWNER){ nodes { nameWithOwner,name,owner{ login}}}}}","variables":"{}"}'
@@ -102,7 +102,7 @@ export default {
        fetch('https://api.github.com/graphql',{  
               method: 'POST',  
               headers: {  
-                "Authorization": "Bearer 8d76e598b8b5ed6cd803f1a9acd8266bad0d5cac", 
+                "Authorization": "Bearer 9cd3bda4b0a4abaa9fe4c6b8cda3172acce26e10", 
                 "Content-Type":"application/json; charset=utf-8"
               },  
               body: '{"query":"query {repository(owner:\\"'+this.ownerLogin+'\\", name:\\"'+this.optionName+'\\"){ issue(number:'+issue.node.number+'){comments(last: 20){edges{comment: node {createdAt,  bodyHTML}}}}}}","variables":"{}"}'
@@ -130,7 +130,7 @@ export default {
             fetch('https://api.github.com/graphql',{  
               method: 'POST',  
               headers: {  
-                "Authorization": "Bearer 8d76e598b8b5ed6cd803f1a9acd8266bad0d5cac", 
+                "Authorization": "Bearer 9cd3bda4b0a4abaa9fe4c6b8cda3172acce26e10", 
                 "Content-Type":"application/json; charset=utf-8"
               },  
               body: '{"query":"query { repository(owner:\\"'+option.owner.login+'\\", name:\\"'+option.name+'\\") { issues(last:100) { edges { node { state,title,bodyHTML,number } } } } }","variables":"{}"}'
