@@ -37,6 +37,10 @@ export default {
   data () {
     
     return {
+      key:"",
+      a:"a989f3a231a91bf49c0",
+      b:"dbf6c1a797c1370ef9fc6",
+      
         value: null,
         selected: null,
         options: [],
@@ -54,6 +58,7 @@ export default {
      
   },
   mounted(){
+   
     this.requestRepositories();
   },
   methods: {
@@ -70,12 +75,13 @@ export default {
     },
     
     requestRepositories(){
+      this.key=this.a+this.b;
       console.log("requestrequest1");
          console.log( this.repositories)
             fetch('https://api.github.com/graphql',{  
               method: 'POST',  
               headers: {  
-                "Authorization": "Bearer 9cd3bda4b0a4abaa9fe4c6b8cda3172acce26e10", 
+                "Authorization": "Bearer "+this.key, 
                 "Content-Type":"application/json; charset=utf-8"
               },  
               body: '{"query":"query{ user(login: \\"octocat\\"){repositories(last:100 affiliations: OWNER){ nodes { nameWithOwner,name,owner{ login}}}}}","variables":"{}"}'
@@ -102,7 +108,7 @@ export default {
        fetch('https://api.github.com/graphql',{  
               method: 'POST',  
               headers: {  
-                "Authorization": "Bearer 9cd3bda4b0a4abaa9fe4c6b8cda3172acce26e10", 
+                "Authorization":"Bearer "+this.key, 
                 "Content-Type":"application/json; charset=utf-8"
               },  
               body: '{"query":"query {repository(owner:\\"'+this.ownerLogin+'\\", name:\\"'+this.optionName+'\\"){ issue(number:'+issue.node.number+'){comments(last: 20){edges{comment: node {createdAt,  bodyHTML}}}}}}","variables":"{}"}'
@@ -130,7 +136,7 @@ export default {
             fetch('https://api.github.com/graphql',{  
               method: 'POST',  
               headers: {  
-                "Authorization": "Bearer 9cd3bda4b0a4abaa9fe4c6b8cda3172acce26e10", 
+                "Authorization": "Bearer "+this.key, 
                 "Content-Type":"application/json; charset=utf-8"
               },  
               body: '{"query":"query { repository(owner:\\"'+option.owner.login+'\\", name:\\"'+option.name+'\\") { issues(last:100) { edges { node { state,title,bodyHTML,number } } } } }","variables":"{}"}'
